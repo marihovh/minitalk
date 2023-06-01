@@ -3,7 +3,7 @@ SRC_S=src/server.c src/utils.c
 OBJ_C=$(SRC_C:src/%.c=obj/%.o)
 OBJ_S=$(SRC_S:src/%.c=obj/%.o)
 CC=gcc
-PRINT=./ft_printf/libftprintf.a
+PRINT=./print/libftprintf.a
 CFLAGS= -Wall -Werror -Wextra
 RM=rm -rf
 
@@ -13,7 +13,7 @@ creat_dir :
 	mkdir -p obj
 
 libcomp : 
-	make -C ./ft_printf
+	make -C ./print
 
 server : $(OBJ_S)
 	$(CC) $(CFLAGS) $(PRINT) $(OBJ_S) -o server
@@ -26,11 +26,11 @@ obj/%.o : src/%.c
 
 fclean : clean
 	$(RM) server client
-	make -C ./ft_printf fclean
+	make -C ./print fclean
 
 clean :
 	$(RM) obj
-	make -C ./ft_printf clean
+	make -C ./print clean
 
 re : fclean all
 
